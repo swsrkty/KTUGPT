@@ -15,7 +15,7 @@ import {
 
 type Checked = DropdownMenuCheckboxItemProps["checked"]
 
-export function DropdownMenuCheckboxes() {
+export function DropdownMenuCheckboxes1() {
   const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true)
   const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false)
   const [showPanel, setShowPanel] = React.useState<Checked>(false)
@@ -23,7 +23,7 @@ export function DropdownMenuCheckboxes() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="flex w-1/5 rounded-xl">
-        <Button variant="outline">Subject</Button>
+        <Button variant="outline">Semester</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Appearance</DropdownMenuLabel>
