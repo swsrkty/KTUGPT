@@ -11,6 +11,17 @@ import { Textarea } from "@/components/ui/textarea"
 
 type Checked = DropdownMenuCheckboxItemProps["checked"]
 
+function handleClick(){
+  const question = document.getElementById('question') as HTMLInputElement
+  fetch('http://127.0.0.1:5000', {
+
+  method: 'POST', 
+  mode: 'cors', 
+  body: JSON.stringify(question.value) 
+
+})
+}
+
 export default function Home() {
  
   return (
@@ -25,8 +36,8 @@ export default function Home() {
       < DropdownMenuCheckboxes2 />
       </div>
       <div className="flex w-1/2 items-center justify-center space-x-2 mt-9 ml-96">
-        <Input type="text" placeholder="Enter your question here" />
-        <Button type="submit">Go</Button>
+        <Input id="question" type="text" placeholder="Enter your question here" />
+        <Button type="submit" onClick={handleClick} >Go</Button>
       </div>
       <div className="flex-row min-h-screen justify-center items-center w-1/2 h-2/3 mt-9 ml-96 h-80">
         <Textarea className="rounded-xl align-center justify-center h-80"></Textarea>
