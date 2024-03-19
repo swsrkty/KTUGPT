@@ -1,0 +1,58 @@
+.history-sidebar {
+    width: 250px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .history-sidebar__title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .history-sidebar__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .history-sidebar__item {
+    padding: 8px 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .history-sidebar__item:last-child {
+    border-bottom: none;
+  }
+  
+  .history-sidebar__item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  #scrollDiv {
+    --sb-track-color: #afafaf;
+    --sb-thumb-color: #000000;
+    --sb-size: 12px;
+  }
+  
+  #scrollDiv::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+  
+  #scrollDiv::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 2px;
+  }
+  
+  #scrollDiv::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 2px;
+  }
+  
+  @supports not selector(::-webkit-scrollbar) {
+    #scrollDiv {
+        scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+    }
+  }
