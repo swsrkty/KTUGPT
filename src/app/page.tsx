@@ -37,7 +37,7 @@ export default function Home() {
       </div>
       <div className="flex w-1/2 items-center justify-center space-x-2 mt-9 ml-96">
         <Input id="question" type="text" placeholder="Enter your question here" />
-        <Button type="submit" onClick={handleClick} >Go</Button>
+        <Button type="submit">Go</Button>
       </div>
       <div className="flex-row min-h-screen justify-center items-center w-1/2 h-2/3 mt-9 ml-96 h-80">
         <Textarea className="rounded-xl align-center justify-center h-80"></Textarea>
