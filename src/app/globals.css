@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.cl-internal-b3fm6y{
+  display: none;  /* hides the clerk branding (for now) */
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
