@@ -38,6 +38,7 @@ export default function Home() {
       
       </div>
       <div className="flex w-1/2 items-center justify-center space-x-2 mt-9 ml-96">
+
         <form onSubmit={handleChange} className="flex w-full items-center justify-between">
         
         <Input id="question" type="text" placeholder="Enter your question here" className="w-full mr-2" />
