@@ -16,12 +16,25 @@ type Checked = DropdownMenuCheckboxItemProps["checked"]
 
 export default function Home() {
   const [inputText, setInputText] = useState([]);
-   
+  const [outputText, setOutputText] = useState("");
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // 👇 Store the input value to local state
     e.preventDefault();
     setInputText(old => [...old, e.target.question.value]);
     console.log(inputText);
+    fetch(`http://192.168.31.180:5000/?q=${inputText.slice(-1)}`, {  // Enter your IP address here
+  
+      method: 'POST', 
+      mode: 'cors', 
+  
+    })
+    .then(response => response.text())
+      .then(text => {
+        text = JSON.parse(text);
+        setOutputText(text.result);
+      })
+      .catch(error => console.error(error));
   };
   
   return (
@@ -49,7 +62,7 @@ export default function Home() {
         
       </div>
       <div className="flex-row min-h-screen justify-center items-center w-1/2 h-2/3 mt-9 ml-96 h-80">
-        <Textarea className="rounded-xl align-center justify-center h-80"></Textarea>
+        <Textarea className="rounded-xl align-center justify-center h-80" value={outputText}></Textarea>
       </div>  
     </main>
   );
