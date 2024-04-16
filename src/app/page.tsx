@@ -17,13 +17,14 @@ type Checked = DropdownMenuCheckboxItemProps["checked"]
 export default function Home() {
   const [inputText, setInputText] = useState([]);
   const [outputText, setOutputText] = useState("");
-
+  const [loading,setLoading]= useState(false);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // 👇 Store the input value to local state
     e.preventDefault();
     setInputText(old => [...old, e.target.question.value]);
     console.log(inputText);
-    fetch(`http://192.168.31.180:5000/?q=${inputText.slice(-1)}`, {  // Enter your IP address here
+    setLoading(true);
+    fetch(`http://192.168.137.163:5000/?q=${inputText.slice(-1)}`, {  // Enter your IP address here
   
       method: 'POST', 
       mode: 'cors', 
@@ -33,6 +34,7 @@ export default function Home() {
       .then(text => {
         text = JSON.parse(text);
         setOutputText(text.result);
+        setLoading(false);
       })
       .catch(error => console.error(error));
   };
@@ -55,7 +57,7 @@ export default function Home() {
         <form onSubmit={handleChange} className="flex w-full items-center justify-between">
         
         <Input id="question" type="text" placeholder="Enter your question here" className="w-full mr-2" />
-        <Button type="submit" >Go</Button>
+        <Button type="submit" >{loading ? <>Loading..</> : <>Go</>}</Button>
 
       {/* <p>Your input: {inputText.slice(-1)}</p> */}
         </form>
