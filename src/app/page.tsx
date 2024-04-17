@@ -1,6 +1,6 @@
 "use client"
 import * as React from "react"
-import { useState,ChangeEvent } from "react"
+import { useState, useEffect, ChangeEvent } from "react"
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 
 import { Button } from "@/components/ui/button"
@@ -20,20 +20,15 @@ export default function Home() {
   const [loading,setLoading]= useState(false);
   const [source, setSource] = useState([]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // 👇 Store the input value to local state
-    e.preventDefault();
-    setInputText(old => old.length<1 ? [e.target.question.value] : [...old, e.target.question.value]);
-    console.log(inputText);
-    console.log(inputText.slice(-1));
-    setLoading(true);
-    fetch(`http://10.42.0.54:5000/?q=${inputText.slice(-1)}`, {  // Enter your IP address here
-  
-      method: 'POST', 
-      mode: 'cors', 
-  
-    })
-    .then(response => response.text())
+  useEffect(() => {
+    if (inputText.length > 0) {
+      setLoading(true);
+      console.log(inputText.slice(-1));
+      fetch(`http://10.42.0.54:5000/?q=${inputText.slice(-1)}`, {  // Enter your IP address here
+        method: 'POST',
+        mode: 'cors',
+      })
+      .then(response => response.text())
       .then(text => {
         text = JSON.parse(text);
         setOutputText(text.result);
@@ -41,7 +36,14 @@ export default function Home() {
         setSource(text.source);
       })
       .catch(error => console.error(error));
+    }
+  }, [inputText]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setInputText(old => old.length < 1 ? [e.target.question.value] : [...old, e.target.question.value]);
   };
+
   
   return (
     <main className=" items-center justify-center">
