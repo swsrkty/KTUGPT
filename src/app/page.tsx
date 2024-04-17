@@ -18,13 +18,16 @@ export default function Home() {
   const [inputText, setInputText] = useState([]);
   const [outputText, setOutputText] = useState("");
   const [loading,setLoading]= useState(false);
+  const [source, setSource] = useState([]);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // 👇 Store the input value to local state
     e.preventDefault();
-    setInputText(old => [...old, e.target.question.value]);
+    setInputText(old => old.length<1 ? [e.target.question.value] : [...old, e.target.question.value]);
     console.log(inputText);
+    console.log(inputText.slice(-1));
     setLoading(true);
-    fetch(`http://192.168.137.163:5000/?q=${inputText.slice(-1)}`, {  // Enter your IP address here
+    fetch(`http://10.42.0.54:5000/?q=${inputText.slice(-1)}`, {  // Enter your IP address here
   
       method: 'POST', 
       mode: 'cors', 
@@ -35,6 +38,7 @@ export default function Home() {
         text = JSON.parse(text);
         setOutputText(text.result);
         setLoading(false);
+        setSource(text.source);
       })
       .catch(error => console.error(error));
   };
@@ -63,9 +67,13 @@ export default function Home() {
         </form>
         
       </div>
-      <div className="flex-row min-h-screen justify-center items-center w-1/2 h-2/3 mt-9 ml-96 h-80">
+      <div className="flex-row justify-center items-center w-1/2 h-2/3 mt-9 ml-96 h-80">
         <Textarea className="rounded-xl align-center justify-center h-80" value={outputText}></Textarea>
-      </div>  
+      </div>
+      <ul className="ml-96 pl-4 mt-2">
+        <h1 className="font-bold">References:</h1>
+        {source.map(item => <li>{"Textbook: " + item.join(" page: ")}</li>)}
+      </ul>
     </main>
   );
 }
