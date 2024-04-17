@@ -14,6 +14,7 @@ export default function Nav() {
             <nav className="border-b-4 border-indigo-500 p-5">
                 <ul className="flex ">
                     <li>KTUGPT</li> 
+                    <li className="fixed right-28 -mt-2"><ModeToggle /></li>
                     <li className="fixed right-5 -mt-2"><Button onClick={() => signOut(() => router.push("/"))}>Sign out</Button></li>
                 </ul>
             </nav>
