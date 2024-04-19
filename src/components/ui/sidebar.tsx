@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Trash2 } from 'lucide-react';
 interface HistoryItem {
   id: number;
   content: string;
@@ -29,10 +30,10 @@ function HistorySidebar(props) {
             Chat History
           </h2>
           <button
-            className="float-right p-1 hover:scale-105 transition-all ease-in-out"
+            className="float-right p-1 mr-1 hover:scale-105 transition-all ease-in-out"
             onClick={clearChatHistory}
           >
-            Clear Chat History
+            <Trash2 />
           </button>
           <ul className="list-none p-0 mt-8 dark:border-[#020817] border-t-4">
             {props.data.map((item) => (
