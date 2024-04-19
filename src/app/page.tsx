@@ -29,7 +29,7 @@ export default function Home() {
     if (inputText.length > 0) {
       setLoading(true);
       console.log(inputText.slice(-1));
-      fetch(` http://127.0.0.1:5000/?q=${inputText.slice(-1)}`, {  // Enter your IP address here
+      fetch(` http://127.0.0.1:5000/?q=${inputText.slice(-1)}`, {  //====== Enter your IP address here ======
         method: 'POST',
         mode: 'cors',
       })
