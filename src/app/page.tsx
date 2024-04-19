@@ -21,6 +21,11 @@ export default function Home() {
   const [source, setSource] = useState([]);
 
   useEffect(() => {
+    const storedHistory = JSON.parse(localStorage.getItem("chatHistory") || "[]");
+    setInputText(storedHistory);
+  }, []);
+
+  useEffect(() => {
     if (inputText.length > 0) {
       setLoading(true);
       console.log(inputText.slice(-1));
@@ -41,7 +46,10 @@ export default function Home() {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setInputText(old => old.length < 1 ? [e.target.question.value] : [...old, e.target.question.value]);
+    const newInput = e.target.question.value;
+    setInputText(old => [...old, newInput]);
+    localStorage.setItem("chatHistory", JSON.stringify([...inputText, newInput]));
+    // setInputText(old => old.length < 1 ? [e.target.question.value] : [...old, e.target.question.value]);
   };
 
   
