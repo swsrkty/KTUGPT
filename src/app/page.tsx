@@ -64,7 +64,7 @@ export default function Home() {
 
         <form onSubmit={handleChange} className="flex w-full items-center justify-between">
         
-        <Input id="question" type="text" placeholder="Enter your question here" className="text-md w-full mr-2" />
+        <Input id="question" type="text" placeholder="Enter your question here" className="text-md w-full mr-2" required />
         <Button type="submit" >{loading ? <>Loading..</> : <>Go</>}</Button>
 
       {/* <p>Your input: {inputText.slice(-1)}</p> */}
