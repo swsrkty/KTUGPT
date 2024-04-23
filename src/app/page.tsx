@@ -78,7 +78,7 @@ export default function Home() {
             className="text-md w-full mr-2"
             required
           />
-          <Button type="submit">{loading ? <>Loading..</> : <>Go</>}</Button>
+          <Button type="submit" disabled={loading}>{loading ? <>Loading..</> : <>Go</>}</Button>
 
           {/* <p>Your input: {inputText.slice(-1)}</p> */}
         </form>
