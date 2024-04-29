@@ -19,7 +19,11 @@ function HistorySidebar(props) {
 
   const clearChatHistory = () => {
     window.confirm("Are you sure you want to clear chat history?") &&
-      (localStorage.removeItem("chatHistory"), window.location.reload());
+      (localStorage.removeItem("chatHistory"),
+       localStorage.removeItem("chatResult"),
+       localStorage.removeItem("resultSource"),
+       window.location.reload()
+      );
   };
 
   return (
@@ -37,8 +41,12 @@ function HistorySidebar(props) {
           </button>
           <ul className="list-none p-0 mt-8 dark:border-[#020817] border-t-4">
             {props.data.map((item) => (
-              <li className="py-2 px-4 hover:bg-gray-300 dark:hover:bg-[#0f172a] dark:border-[#020817] border-b-4 border-r-4">
-                {item}
+              <li 
+                className="py-2 px-4 hover:bg-gray-300 dark:hover:bg-[#0f172a] dark:border-[#020817] border-b-4 border-r-4" 
+                key={item.id}
+                onClick={() => props.selectHistory(item.id)}
+              >
+                {item.text}
               </li>
             ))}
           </ul>
