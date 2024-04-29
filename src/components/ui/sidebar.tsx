@@ -19,7 +19,11 @@ function HistorySidebar(props) {
 
   const clearChatHistory = () => {
     window.confirm("Are you sure you want to clear chat history?") &&
-      (localStorage.removeItem("chatHistory"), localStorage.removeItem("chatResult"), window.location.reload());
+      (localStorage.removeItem("chatHistory"),
+       localStorage.removeItem("chatResult"),
+       localStorage.removeItem("resultSource"),
+       window.location.reload()
+      );
   };
 
   return (

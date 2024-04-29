@@ -42,7 +42,7 @@ export default function Home() {
           setOutputText((old) => [...old, text.result]);
           setLoading(false);
           setId(-1);
-          setSource(text.source);
+          setSource((old) => [...old, text.source]);
         })
         .catch((error) => console.error(error));
     }
@@ -58,6 +58,10 @@ export default function Home() {
     );
     localStorage.setItem(
       "chatResult",
+      JSON.stringify(outputText)
+    );
+    localStorage.setItem(
+      "resultSource",
       JSON.stringify(outputText)
     );
   };
@@ -98,9 +102,13 @@ export default function Home() {
       </div>
       <ul className="ml-96 pl-4 mt-2">
         <h1 className="font-bold">References:</h1>
-        {source.map((item) => (
+        {
+          source.length > 0 ?
+          source[id == -1 ? source.length - 1 : id - 1].map((item) => (
           <li>{"Textbook: " + item.join(" - page: ")}</li>
-        ))}
+          )):
+          null
+        }
       </ul>
     </main>
   );
