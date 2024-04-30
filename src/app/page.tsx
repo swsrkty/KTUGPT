@@ -31,7 +31,7 @@ export default function Home() {
     if (inputText.length > 0) {
       setLoading(true);
       console.log(inputText.slice(-1));
-      fetch(` http://127.0.0.1:5000/?q=${inputText[inputText.length-1]["text"]}`, {
+      fetch(` https://sameemul-haque-ktugpt.hf.space//?q=${inputText[inputText.length-1]["text"]}`, {
         //====== Enter your IP address here ======
         method: "POST",
         mode: "cors",
