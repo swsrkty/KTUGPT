@@ -34,7 +34,7 @@ function HistorySidebar(props) {
 
   return (
     <>
-      <button className="flex m-1 lg:hidden" >
+      <button className="flex absolute m-0.5 lg:hidden" >
         <ChevronRight onClick={toggleSidebar} size={32} className="text-white rounded bg-[#0f172a] dark:bg-[#020817] p-1 hover:text-gray-300"/>
       </button>
       <div className={"lg:flex" + (showSidebar ? " flex" : " hidden")}>

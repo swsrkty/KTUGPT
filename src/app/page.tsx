@@ -71,16 +71,16 @@ export default function Home() {
   return (
     <main>
       <Nav />
-      <div className="flex flex-row w-full">
+      <div className="flex">
         <HistorySidebar data={inputText} selectHistory={message}/>
         <section className="grow">
-          <h2 className="pt-6 text-center text-2xl lg:text-3xl font-bold font-sans">
+          <h2 className="pt-8 lg:pt-6 text-center text-2xl lg:text-3xl font-bold font-sans">
             Get answers from your textbooks
           </h2>
           <div className="flex justify-center">
             <form
               onSubmit={handleChange}
-              className="flex flex-row gap-4 pt-6 w-2/3 lg:w-1/2"
+              className="flex flex-row gap-4 pt-6 w-10/12 lg:w-1/2"
               >
               <Input
                 id="question"
@@ -96,12 +96,12 @@ export default function Home() {
           </div>
           <div className="flex justify-center pt-6 h-52">
             <Textarea
-              className="text-md rounded-xl w-2/3 lg:w-1/2 h-52"
+              className="text-md rounded-xl w-10/12 lg:w-1/2 h-52"
               value={id == -1 ? outputText.slice(-1) : outputText[id-1]}
               ></Textarea>
           </div>
           <div className="flex justify-center pt-6">
-            <ul className="w-2/3 lg:w-1/2">
+            <ul className="w-10/12 lg:w-1/2">
               <h1 className="font-bold">References:</h1>
               {
                 source.length > 0 ?
